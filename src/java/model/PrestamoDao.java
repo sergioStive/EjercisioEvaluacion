@@ -4,9 +4,10 @@
  */
 package model;
 
-import controlador.Conectar;
+import controlador.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -17,8 +18,10 @@ import java.sql.SQLException;
 public class PrestamoDao {
 
     private Connection cnn = null;
-
+    ResultSet rs = null;
     private PreparedStatement pstmt;
+    String msgSalida;
+
 
     public String registrarPrestamo(PrestamoDto p, Connection cnn) throws SQLException {
 
@@ -62,5 +65,27 @@ public class PrestamoDao {
 
         return msgSalida;
     }
+    
+    public int getCantidadPrestamos(String idUser){
+        int retorno = 0;
+        try{
+            pstmt = cnn.prepareStatement("Select Count(1) Cantidad From usuarios u inner Join prestamos p ON u.iduser = p.userId Where u.userName = ? ;");
+            pstmt.setString(1, idUser);
+            pstmt.executeQuery();
+
+            rs = pstmt.executeQuery();
+            
+            while (rs.next()) {
+                retorno = rs.getInt("Cantidad");
+            }
+            
+        }catch(SQLException ex){
+            retorno=0;
+        }finally{
+            return retorno;
+        }
+    }
+    
+    
     
 }
