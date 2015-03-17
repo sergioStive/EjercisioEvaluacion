@@ -48,7 +48,7 @@ public class Index extends HttpServlet {
         if( usuat != null && nrPrestamos < 2){
             response.sendRedirect("prestamos.jsp");
         }else if(nrPrestamos == 2) {
-            response.sendRedirect("Index.jsp?msj=el usuario tiene dos prestamos");
+            response.sendRedirect("Index.jsp?msj=el usuario tiene dos prestamos no es posible realizarlo");
         }else{
             response.sendRedirect("RegistroUsuario.jsp");
         }
