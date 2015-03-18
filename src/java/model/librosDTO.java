@@ -14,7 +14,7 @@ public class librosDTO {
      private int IdLibro;
     private String isbm;
     private String Titulo;
-    private String Estadolibro;
+    private int Estadolibro;
 
     @Override
     public String toString() {
@@ -46,11 +46,11 @@ public class librosDTO {
         this.Titulo = Titulo;
     }
 
-    public String getEstadolibro() {
+    public int getEstadolibro() {
         return Estadolibro;
     }
 
-    public void setEstadolibro(String Estadolibro) {
+    public void setEstadolibro(int Estadolibro) {
         this.Estadolibro = Estadolibro;
     }
 }

@@ -30,40 +30,37 @@ public class librosDAO {
         cnn = Conexion.getInstance();
 }
     
-    public String Insertarlibro(librosDTO newPersona) throws SQLException {
-        String salida = "";
-        try {
+    public String crearLibro(librosDTO newLinea){
+       String salida = "";
+       try {
 
-            int resultado = 0;
-            pstmt = cnn.prepareStatement("INSERT INTO libros VALUES ( ?, ?, ?, ?)");
-           
-            pstmt.setInt(1 , newPersona.getIdLibro());
-            pstmt.setString(2, newPersona.getIsbm());
-            pstmt.setString(3, newPersona.getTitulo());
-            pstmt.setString(4, newPersona.getEstadolibro());
-            
+           int resultado = 0;
+           pstmt = cnn.prepareStatement("INSERT INTO libros VALUES ( ?, ?, ?, ?)");
+           pstmt.setLong(1, newLinea.getIdLibro());
+           pstmt.setString(2, newLinea.getIsbm());
+           pstmt.setString(3, newLinea.getTitulo());
+           pstmt.setInt(4, newLinea.getEstadolibro());
+         
+           resultado = pstmt.executeUpdate();
 
-            resultado = pstmt.executeUpdate();
+           if (resultado != 0) {
+               salida = "su linea ha sido registrada. ";
+           } else {            
+               
+           }
+       } catch (SQLException sqle) {
+           salida = "Ocurrió la siguiente exception : " + sqle.getMessage();
+       } finally {
+           try {
+               pstmt.close();
+           } catch (SQLException ex) {
+               Logger.getLogger(librosDAO.class.getName()).log(Level.SEVERE, null, ex);
+           }
+       }
 
-            if (resultado != 0) {
-                salida = "El libro se Registro Existosamente ";
-            } else {
-                // salida = "Ha ocurrido un problema al crear el profesor. Contacte al administrador";
+       return salida;
 
-            }
-        } catch (SQLException sqle) {
-            salida = "Ocurrió la siguiente exception : " + sqle.getMessage();
-        } finally {
-            try {
-                pstmt.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(UsuariosDAO.class.getName()).log(Level.SEVERE, null, ex); // se deja por defecto en este caso
-            }
-        }
-
-        return salida;
-
-    }
+   }
     
     
 }

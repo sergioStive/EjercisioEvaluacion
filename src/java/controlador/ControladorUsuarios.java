@@ -46,17 +46,19 @@ public class ControladorUsuarios extends HttpServlet {
             UsuariosDAO pdao = new UsuariosDAO();
             
            
-            pdto.setUserName(request.getParameter("cor"));
-            pdto.setPass(request.getParameter("date"));
+            pdto.setUserName(request.getParameter("name"));
             pdto.setNombres(request.getParameter("nombres"));
-            pdto.setEmail(request.getParameter("apellidos"));
+            pdto.setEmail(request.getParameter("email"));
+            pdto.setPass(request.getParameter("pas"));
+            
+            
            
   
             
             String mensaje = pdao.InsertarUsuarios(pdto);
             HttpSession misesion = request.getSession(true);
             misesion.setAttribute("logueado", pdto);
-            response.sendRedirect("Index.jsp?msg="+mensaje);
+            response.sendRedirect("index.jsp?msg="+mensaje);
         }
     
          else if(request.getParameter("ingresar") != null){
@@ -64,14 +66,14 @@ public class ControladorUsuarios extends HttpServlet {
             UsuariosDAO pdao = new UsuariosDAO();
             
           
-        int va= pdao.validarUsuario(Integer.parseInt(request.getParameter("cor")));
-        if(va ==0){
+        String va= pdao.validarUsuario(request.getParameter("pass"));
+        if(va ==""){
             
-               response.sendRedirect("Index.jsp?no="+ va);
+               response.sendRedirect("index.jsp?no="+ va);
             }
            
-            else if(va !=0){
-                response.sendRedirect("Prestamos.jsp");
+            else if(va !=""){
+                response.sendRedirect("prestamos.jsp");
             }
         }
 

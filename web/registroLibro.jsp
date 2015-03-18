@@ -17,7 +17,7 @@
                 <table width="744" align="center">
 
                     <div class="ba">
-                        <h1><center>Registro de Usuarios</center></h1>
+                        <h1><center>Registro de Libros</center></h1>
                     </div>
               
                     <tr>
@@ -31,9 +31,9 @@
                     <tr>
                         <td><label for="nombres" class="labele"><strong>Estado libros<font color="#FF0000">* </strong></label></font>
                             <select name="nombres">
-                                <option value="Dañado">Dañado</option>
-                                <option value="Perdido">Perdido</option>
-                                <option value="Dado de baja">Dado de baja</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
                             </select>
                         </td>
                     </tr>

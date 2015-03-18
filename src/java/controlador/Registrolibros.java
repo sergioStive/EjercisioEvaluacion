@@ -48,14 +48,12 @@ public class Registrolibros extends HttpServlet {
             
             pdto.setIsbm(request.getParameter("cor"));
             pdto.setTitulo(request.getParameter("date"));
-            pdto.setEstadolibro(request.getParameter("nombres"));
+            pdto.setEstadolibro(Integer.parseInt(request.getParameter("nombres")));
            
   
             
-            String mensaje = pdao.Insertarlibro(pdto);
-            HttpSession misesion = request.getSession(true);
-            misesion.setAttribute("logueado", pdto);
-            response.sendRedirect("Index.jsp?msg="+mensaje);
+            String mensaje = pdao.crearLibro(pdto);
+            response.sendRedirect("registroLibro.jsp?msg="+mensaje);
         }
     }
 

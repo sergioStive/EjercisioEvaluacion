@@ -14,10 +14,8 @@ public class PrestamoDto {
     private int idPrestamo=0;
     private int idLibro=0;
     private int idUsuario=0;
-
-    public PrestamoDto() {
-    }
-
+    private String fechaEntrega ="";
+    private int estado = 0;
     
 
     /**
@@ -60,6 +58,34 @@ public class PrestamoDto {
      */
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    /**
+     * @return the fechaEntrega
+     */
+    public String getFechaEntrega() {
+        return fechaEntrega;
+    }
+
+    /**
+     * @param fechaEntrega the fechaEntrega to set
+     */
+    public void setFechaEntrega(String fechaEntrega) {
+        this.fechaEntrega = fechaEntrega;
+    }
+
+    /**
+     * @return the estado
+     */
+    public int getEstado() {
+        return estado;
+    }
+
+    /**
+     * @param estado the estado to set
+     */
+    public void setEstado(int estado) {
+        this.estado = estado;
     }
 
 }

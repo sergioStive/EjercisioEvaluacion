@@ -9,9 +9,21 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Prestamos Libros</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Registre su Prestamo</h1>
+        <form action="Index" method="get">
+           <label>UserID</label>
+           <input type="text" name="userId" />
+           <label>IDLibro</label>
+           <input type="text" name="libroid" >
+           <label>Fecha</label>
+           <input type="date" name="fecha">
+           <input type="submit" value="Hacer Prestamo"  name="registro"/>
+        </form>
+        
+        
+        
     </body>
 </html>

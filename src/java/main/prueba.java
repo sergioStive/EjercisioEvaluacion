@@ -63,11 +63,11 @@ public class prueba {
                 System.out.println("Isbm");
                 lib.setIsbm(in.next());
                 System.out.println("estado libro");
-                lib.setEstadolibro(in.next());
+                lib.setEstadolibro(in.nextInt());
                 System.out.println("titulo");
                 lib.setTitulo(in.next());
                 
-                System.out.println(libros.Insertarlibro(lib));
+                System.out.println(libros.crearLibro(lib));
                 break;
             
             

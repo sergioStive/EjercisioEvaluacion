@@ -8,6 +8,8 @@ package controlador;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,7 +37,7 @@ public class Index extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {  
+            throws ServletException, IOException, SQLException {  
         try{
         response.setContentType("text/html;charset=UTF-8");
         UsuariosDTO ususa = new UsuariosDTO();
@@ -54,7 +56,21 @@ public class Index extends HttpServlet {
         }
         } catch (SQLException ex) {
         }
-    }
+    
+       if (request.getParameter("registro") != null) {
+
+            PrestamoDto pdto = new PrestamoDto();
+            PrestamoDao pdao = new PrestamoDao();
+            
+            pdto.setIdUsuario(Integer.parseInt(request.getParameter("userId")));
+            pdto.setIdLibro(Integer.parseInt(request.getParameter("libroid")));
+            pdto.setFechaEntrega(request.getParameter("fecha"));
+            pdto.setEstado(1);
+            String mensaje = pdao.InsertarPrestamo(pdto);
+            
+            response.sendRedirect("prestamos.jsp?msg="+mensaje);
+        } 
+      }
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -68,7 +84,11 @@ public class Index extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -82,7 +102,11 @@ public class Index extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(Index.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -94,7 +118,6 @@ public class Index extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 
 }
     

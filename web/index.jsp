@@ -16,9 +16,25 @@
     <body>
         <h1>REGISTRO DE PRESTAMOS</h1>
 
-        
+        <form action="ControladorUsuarios" >
+            
+            <label>Contraseña</label> 
+            
+            <input type="password" name="pass" value="pass"/>
+            <input type="submit" value="Ingresar" name="ingresar" />
+            <br>
+            <%
+if(request.getParameter("no") != null  ) {
+%>
+<div>
+<b div clas="valido"> sus datos no son validos. <a href="registro.jsp"> Registrese</a></b>
+</div>
+<%
+}
+%>
+</form>
 
-
+ 
 
     </body>
 </html>

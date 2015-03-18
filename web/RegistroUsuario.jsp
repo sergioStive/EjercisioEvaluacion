@@ -28,7 +28,7 @@
                     <tr>
 
                         <td><label for="cor" class="labele"><strong>UserName<font color="#FF0000">*</strong></label></font></td>
-                        <td><input name="cor" type="text" style="width:250px; height:25px " autofocus id="cor" placeholder="UserName">
+                        <td><input name="name" type="text" style="width:250px; height:25px " autofocus id="cor" placeholder="UserName">
                         </td>
                         <td><label for="nombres" class="labele"><strong>Nombres<font color="#FF0000">*</strong></label></font></td>
                         <td><input name="nombres" type="text" style="width:250px; height:25px" autofocus id="nombres" placeholder="Nombres">
@@ -36,11 +36,11 @@
                     </tr>
                     <tr>
                         <td><label for="apellidos" class="labele"><strong>Email<font color="#FF0000">*</strong></label></font></td>
-                        <td><input name="apellidos" type="email" style="width:250px; height:30px" autofocus id="apellidos"></td>
+                        <td><input name="email" type="email" style="width:250px; height:30px" autofocus id="apellidos"></td>
                     </tr>
                     <tr>
                         <td><label for="date" class="labele"><strong>Contraseña<font color="#FF0000">*</strong></label></font></td>
-                        <td><input name="date" type="password" id="date" style="width:250px; height:25px" placeholder="Contraseña"></td>   
+                        <td><input name="pas" type="password" id="date" style="width:250px; height:25px" placeholder="Contraseña"></td>   
                         
                     </tr>    
                     
